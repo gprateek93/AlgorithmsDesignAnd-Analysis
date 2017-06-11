@@ -1,2 +1,2 @@
 # AlgorithmsDesignAnd-Analysis
-Projects of the coursera course on Algorithms
+Assignments of the coursera course on Algorithms
