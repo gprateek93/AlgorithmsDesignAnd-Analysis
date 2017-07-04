@@ -47,5 +47,5 @@ int main(){
         res += (getMedian(minHeap,maxHeap)%10000);
     }
     cout<<res%10000;
-    return 0;
+    return 0; 
 }
