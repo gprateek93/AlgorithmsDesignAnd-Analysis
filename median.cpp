@@ -33,7 +33,7 @@ long long getMedian(priority_queue<int,vector<int>,greater<int> > minHeap, prior
 }
 
 int main(){
-    long long res=0;
+    int res=0;
     priority_queue<int,vector<int>,greater<int> > minHeap;
     priority_queue<int,vector<int>,less<int> > maxHeap;
     ifstream myfile;
@@ -44,7 +44,7 @@ int main(){
         int n;
         ss>>n;
         addNumber(n,minHeap,maxHeap);
-        res += getMedian(minHeap,maxHeap);
+        res += (getMedian(minHeap,maxHeap)%10000);
     }
     cout<<res%10000;
     return 0;
