@@ -25,8 +25,10 @@ int main(){
         vector<long long> :: iterator it_v;
         for(it_v = targets.begin(); it_v != targets.end(); it_v++){
             int y = (*it_v) - x;
-            if(mymap.find(y)!=mymap.end()){
-                found[(*it_v)] = 1;
+            if(x!=y){
+                if(mymap.find(y)!=mymap.end()){
+                    found[(*it_v)] = 1;
+                }
             }
         }
     }
