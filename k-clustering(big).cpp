@@ -3,34 +3,6 @@ using namespace std;
 unordered_map<int, int> hash_map;
 vector<int> one_bit;
 vector<int> two_bit;
-void store(string filename) {
-	int line = 1;
-	int num, bits;
-	ifstream infile;
-	infile.open(filename, ios::in);
-	string str;
-	getline(infile, str);
-	istringstream iss(str);
-	iss >> num >> bits;
-	generate(bits);
-	while (line <= num) {
-		string str;
-		getline(infile, str);
-		istringstream iss(str);
-		int i = 0;
-		int val = 0;
-		while (i < bits) {
-			int n;
-			iss >> n;
-			val = val * 2 + n;
-			++i;
-		}
-		if (hash_map.find(val) == hash_map.end())
-			hash_map.insert(pair<int, int>(val, hash_map.size()));
-		++line;
-	}
-	infile.close();
-}
 void display(void) {
 	cout << "hash_map: " << endl;
 	for(auto it = hash_map.begin(); it != hash_map.end(); ++it)
@@ -105,7 +77,32 @@ int find(int* id, int u) {
 }
 
 int main(int argc, char** argv) {
-	store("clustering_big.txt");
+	int line = 1;
+	int num, bits;
+	ifstream myfile;
+	myfile.open("clustering_big.txt");
+	string input;
+	getline(myfile, input);
+	istringstream iss(input);
+	iss >> num >> bits;
+	generate(bits);
+	while (line <= num) {
+		string str;
+		getline(myfile, str);
+		istringstream iss(str);
+		int i = 0;
+		int val = 0;
+		while (i < bits) {
+			int n;
+			iss >> n;
+			val = val * 2 + n;
+			++i;
+		}
+		if (hash_map.find(val) == hash_map.end())
+			hash_map.insert(pair<int, int>(val, hash_map.size()));
+		++line;
+	}
+	myfile.close();
 	cout << "cluster: " << clustering() << endl;
 	return 0;
 }
