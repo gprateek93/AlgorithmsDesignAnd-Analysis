@@ -84,10 +84,13 @@ int myint(string s){
 }
 
 int main(){
-    Graph g(5);
     ifstream myfile;
     myfile.open("scc.txt");
     string input;
+    istringstream s(input);
+    int n;
+    s>>n;
+    Graph g(n);
     while(getline(myfile,input)){
         istringstream ss(input);
         int src, dest;
