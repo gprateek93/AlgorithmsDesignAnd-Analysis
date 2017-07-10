@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+vector<long long> s;
+
 class Graph{
     private:
         int v;
@@ -34,13 +36,13 @@ Graph Graph :: transpose(){
     return g;
 }
 
-void Graph :: dfs(int i, bool visited[]){
+void Graph :: dfs(int i, bool visited[],long long *size){
     visited[i] = true;
-    cout<<i<<" ";
     list<int> :: iterator it;
     for(it = adj[i].begin(); it!=adj[i].end(); it++){
         if(!visited[*it])
-            dfs(*it,visited);
+            *size = *size+1;
+            dfs(*it,visited,&size);
     }
 }
 
@@ -69,8 +71,9 @@ void Graph :: printSCC(){
         int i = mystck.top();
         mystck.pop();
         if(!visited[i]){
-            tr.dfs(i,visited);
-            cout<<endl;
+            long long size =0;
+            tr.dfs(i,visited,&size);
+            s.push_back(size);
         }
     }
     return;
@@ -98,10 +101,9 @@ int main(){
         ss>>dest;
         g.addEdge(src,dest);
     }
- 
-    cout << "Following are strongly connected components in "
-            "given graph \n";
-    g.printSCC();
- 
+    sort(s.begin(),s.end());
+    for(int i=0;i<4;i++){
+        cout<<s[i]<<" ";
+    }
     return 0;
 }
