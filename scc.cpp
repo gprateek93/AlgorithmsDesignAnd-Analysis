@@ -107,4 +107,4 @@ int main(){
         cout<<s[i]<<" ";
     }
     return 0;
-}
+} 
