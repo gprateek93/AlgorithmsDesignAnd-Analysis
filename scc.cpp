@@ -90,6 +90,7 @@ int main(){
     ifstream myfile;
     myfile.open("scc.txt");
     string input;
+    getline(myfile,input);
     istringstream s(input);
     int n;
     s>>n;
